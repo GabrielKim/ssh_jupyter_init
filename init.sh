@@ -6,8 +6,11 @@ chmod +x cloudflared
 apt-get update &> /dev/null
 apt-get install -y ssh openssh-server &> /dev/null
 
+echo root:0000 | chpasswd
+
 mkdir -p /var/run/sshd
 echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 
 service ssh start
 
