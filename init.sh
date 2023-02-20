@@ -1,9 +1,10 @@
 #!/bin/bash
 
-wget -q -nc https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+wget -q -nc https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 &> /dev/null
 mv cloudflared-linux-amd64 cloudflared
 chmod +x cloudflared
-apt-get install -y ssh openssh-server
+apt-get update &> /dev/null
+apt-get install -y ssh openssh-server &> /dev/null
 
 mkdir -p /var/run/sshd
 echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
